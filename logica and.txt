@@ -1,0 +1,15 @@
+Manual de Uso – Sistema de Prensa Hidráulica com Lógica AND e ESP32
+
+Este manual tem como objetivo orientar o usuário sobre o funcionamento e operação de um sistema de segurança com lógica AND aplicado a uma prensa hidráulica. O sistema foi desenvolvido utilizando um microcontrolador ESP32, dois botões de acionamento e um LED indicador, funcionando como uma etapa de segurança para evitar acionamentos acidentais da prensa.
+
+O princípio de funcionamento do sistema é baseado na lógica AND, o que significa que a prensa só será ativada quando os dois botões forem pressionados simultaneamente. Essa configuração é uma medida de proteção, garantindo que o operador utilize as duas mãos para acionar o sistema, mantendo-as longe da área de risco da prensa.
+
+Quando o operador pressiona apenas um dos botões, o sistema não será ativado. O mesmo ocorre se nenhum botão estiver pressionado. Somente com os dois botões pressionados ao mesmo tempo o sistema reconhece a condição de ativação. Nesse momento, o ESP32 envia um sinal ao LED conectado ao pino GPIO 2, que é aceso para indicar que o sistema está em funcionamento e, consequentemente, que a prensa pode estar operando. Esse LED serve como um indicador visual imediato do estado do sistema.
+
+Para que o sistema funcione corretamente, é importante que os botões estejam conectados aos pinos GPIO 4 e GPIO 5 do ESP32. Esses pinos estão configurados como entradas digitais e monitoram constantemente o estado dos botões. A leitura ocorre a cada 10 milissegundos, o que ajuda a evitar falsos acionamentos causados por ruídos ou contatos intermitentes (efeito "bouncing").
+
+O LED, conectado ao pino GPIO 2, é configurado como uma saída digital. Ele permanece apagado enquanto os dois botões não estiverem pressionados simultaneamente e acende apenas quando a condição da lógica AND é satisfeita. Este LED é um recurso essencial para o operador, pois permite saber se o sistema está ativado sem precisar olhar diretamente para a prensa.
+
+Recomenda-se sempre verificar se os botões e o LED estão funcionando corretamente antes de iniciar a operação da prensa. Caso o LED não acenda mesmo com os dois botões pressionados, o sistema não deve ser utilizado até que seja feita a devida verificação técnica. Nunca tente burlar o funcionamento pressionando os dois botões com uma só mão ou com objetos improvisados, pois isso compromete a segurança e pode causar acidentes graves.
+
+Por fim, é importante lembrar que esse sistema é uma camada adicional de proteção e não substitui os demais dispositivos de segurança da máquina. Toda manutenção, inspeção ou ajuste na prensa deve ser realizada com o sistema desligado e por pessoal capacitado.
